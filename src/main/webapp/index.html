@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="text" placeholder="service name" id="service_name"/>
+    <input type="button" onclick="getStatus()" value="Status"/>
+    <p id="result"></p>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js">
+    </script>
+    <script>
+        function getStatus() {
+            var serviceName = $("#service_name").val();
+            $.get("http://hystrix-consumer:8888/hystrix-consumer-1.0/services/services/service-status/" + serviceName, function(data) {
+                $("#result").append("<div>" + serviceName + " - <em>" + data + "</em></div>");
+            });
+        }
+
+    </script>
+</body>
+</html>

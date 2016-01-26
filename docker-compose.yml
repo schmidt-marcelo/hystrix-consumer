@@ -1,0 +1,11 @@
+web:
+  image: jwilder/nginx-proxy
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+  ports:
+    - "8888:80"
+
+app:
+  build: .
+  environment:
+    - VIRTUAL_HOST=hystrix-consumer

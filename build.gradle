@@ -1,0 +1,39 @@
+group 'studies'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'javax.ws.rs:jsr311-api:1.1.1'
+    compile 'com.sun.jersey:jersey-server:1.13'
+    compile 'com.sun.jersey:jersey-core:1.13'
+    compile 'com.sun.jersey:jersey-servlet:1.13'
+    compile 'com.sun.jersey:jersey-json:1.13'
+    compile 'joda-time:joda-time:2.3'
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'org.apache.httpcomponents:httpclient:4.5.1'
+    compile 'com.netflix.hystrix:hystrix-core:1.4.12'
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'com.netflix.hystrix:hystrix-core:1.4.23'
+    compile 'com.netflix.hystrix:hystrix-metrics-event-stream:1.4.10'
+    compile 'com.netflix.archaius:archaius-core:0.7.3'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+sourceSets {
+    main.java.srcDir 'src/main'
+    test.java.srcDir 'src/test'
+}
+
+war {
+    webXml= file('src/main/resources/web.xml')
+}
+
